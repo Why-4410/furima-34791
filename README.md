@@ -1,20 +1,20 @@
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| first_name         | string | null: false |
-| last_name          | string | null: false |
-| first_name_k       | string | null: false |
-| last_name_k        | string | null: false |
-| birth              | date   | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_k       | string | null: false               |
+| last_name_k        | string | null: false               |
+| birth              | date   | null: false               |
 
 ## Association
 
 - has_many :items
-- has_many :order
+- has_many :orders
 
 
 ## item テーブル
@@ -34,11 +34,6 @@
 ## Association
 
 - belongs_to :user
-- belongs_to :category_id
-- belongs_to :condition_id
-- belongs_to :delivery_fee_id
-- belongs_to :prefecture_id
-- belongs_to :delivery_day_id
 - has_one :order
 
 
@@ -66,9 +61,7 @@
 | house_number  | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| buy_record    | references | null: false, foreign_key: true |
 
 ## Association
 
 - belongs_to :order
-- belongs_to :prefecture_id
