@@ -71,4 +71,4 @@
 ## Association
 
 - belongs_to :order
-- belongs_to :prefecture_id
+- belongs_to :prefecture_id 
