@@ -22,7 +22,7 @@
 | Column          | Type       | Options
 | --------------- | ---------- | ------------------------------ |
 | name            | string     | null: false                    |
-| text            | text       | null: false                    |
+| product_text    | text       | null: false                    |
 | category_id     | integer    | null: false                    |
 | condition_id    | integer    | null: false                    |
 | delivery_fee_id | integer    | null: false                    |
@@ -61,6 +61,7 @@
 | house_number  | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ## Association
 
