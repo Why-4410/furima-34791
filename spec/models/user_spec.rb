@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
     context '新規登録できるとき'
     it 'emailに＠が含まれていれば登録できる' do
       @user.email = 'test01@test.com'
+      expect(@user).to be_valid
     end
     it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
       expect(@user).to be_valid
@@ -20,18 +21,23 @@ RSpec.describe User, type: :model do
     end
     it '生年月日が入力されていれば登録できる' do
       @user.birth = "1993-08-26"
+      expect(@user).to be_valid
     end
     it 'ファーストネームが入力されていれば登録できる' do
       @user.first_name = "白井"
+      expect(@user).to be_valid
     end
     it 'ラストネームが入力されていれば登録できる' do
       @user.last_name = "義人"
+      expect(@user).to be_valid
     end
     it 'ファーストネームのカナが入力されていれば登録できる' do
       @user.first_name_k = "シライ"
+      expect(@user).to be_valid
     end
     it 'ラストネームのカナが入力されていれば登録できる' do
       @user.last_name_k = "ヨシト"
+      expect(@user).to be_valid
     end
   end
 
