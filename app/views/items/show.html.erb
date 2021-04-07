@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag "item-sample.png" ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <% if @items.present? == false %>
+      <% if @item.present? == false %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -18,11 +18,11 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        <%= @item.price %>
       </span>
       <% end %>
       <span class="item-postage">
-        <%= "配送料負担" %>
+        <%= @item.delivery_fee.name %>
       </span>
     </div> 
     <% if user_signed_in? %>
@@ -38,7 +38,7 @@
 
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.product_text %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -104,7 +104,7 @@
     </a>
   </div>
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
