@@ -111,5 +111,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number", "Price is not a number")
     end
+
+    it '半角英語だけでは登録できない' do
+      @item.price = 'aaa'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number", "Price is not a number")
+    end
   end
 end

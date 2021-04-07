@@ -9,18 +9,17 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :delivery_day
 
-  validates :name,
-    presence: true,
-    length: {maximum: 40}
 
-  validates :product_text,
-    presence: true,
-    length: {maximum: 1000}
+  with_options presence: true do
+    validates :name, length: {maximum: 40}
+    validates :product_text, length: {maximum: 1000}
+    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+    validates :image
+    validates :price, numericality: { with: /\A[0-9]+\z/ } 
+  end
+    
 
-  validates :price, numericality: { with: /\A[0-9]+\z/ } 
-
-  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-
+  
 
   
   with_options numericality: { other_than:1} do
@@ -32,5 +31,5 @@ class Item < ApplicationRecord
 
   end
 
-  validates :image, presence: true
+  
 end
