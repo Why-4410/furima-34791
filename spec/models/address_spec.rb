@@ -18,41 +18,33 @@ RSpec.describe Address, type: :model do
       expect(@addresses.errors.full_messages).to include("Token can't be blank")
     end
 
-    it "郵便番号を入力すれば購入できる" do
-      @addresses.postal_cord = '176-0079'
-      expect(@addresses).to be_valid
-    end
-
-    it "都道府県を入力すれば登録できる" do
-      @addresses.prefecture_id = 2
-      expect(@addresses).to be_valid
-    end
-
-    it "市区町村を入力すれば登録できる" do
-      @addresses.sity = '練馬区'
-      expect(@addresses).to be_valid
-    end
-
-    it "番地を入力すれば登録できる" do
-      @addresses.house_number = '練馬区１'
-      expect(@addresses).to be_valid
-    end
-
-    it "電話番号を入力すれば登録できる" do
-      @addresses.phone_number = '08097224410'
-      expect(@addresses).to be_valid
-    end
+    
   end
 
   context '商品購入できない時'
-
-  it "カード情報が空では購入できない" do
+  it "郵便番号を入力すれば購入できる" do
+    @addresses.postal_cord = '176-0079'
+    expect(@addresses).to be_valid
   end
 
-  it "有効期限が空では購入できない" do
+  it "都道府県を入力すれば登録できる" do
+    @addresses.prefecture_id = 2
+    expect(@addresses).to be_valid
   end
 
-  it "セキュリティコードが空では購入できない" do
+  it "市区町村を入力すれば登録できる" do
+    @addresses.sity = '練馬区'
+    expect(@addresses).to be_valid
+  end
+
+  it "番地を入力すれば登録できる" do
+    @addresses.house_number = '練馬区１'
+    expect(@addresses).to be_valid
+  end
+
+  it "電話番号を入力すれば登録できる" do
+    @addresses.phone_number = '08097224410'
+    expect(@addresses).to be_valid
   end
 
   it "郵便番号が空では購入できない" do

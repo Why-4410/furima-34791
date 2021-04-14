@@ -1,15 +1,13 @@
 class OrdersController < ApplicationController
-
+  before_action :set_item, only: [:create, :index]
   before_action :authenticate_user!, only: [:index]
 
   def index
     @form = PayForm.new
-    @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id || @item.order != nil
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @form = PayForm.new(order_params)
     if @form.valid?
       pay_item
