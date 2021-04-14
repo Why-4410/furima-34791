@@ -10,6 +10,8 @@ class PayForm
     validates :house_number
     validates :phone_number, length: {maximum: 11}
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   with_options format: { with: /\A\d{3}[-]\d{4}\z/, message: 'ハイフンを入れてください' } do

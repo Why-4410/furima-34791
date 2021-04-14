@@ -3,8 +3,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    @form = PayForm.new
     redirect_to root_path if current_user.id == @item.user_id || @item.order != nil
+    @form = PayForm.new
   end
 
   def create
