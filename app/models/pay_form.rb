@@ -5,7 +5,7 @@ class PayForm
 
   # ここにバリデーションの処理を書く
   with_options presence: true do
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than:1}
     validates :sity
     validates :house_number
     validates :phone_number, length: {maximum: 11}
@@ -18,7 +18,7 @@ class PayForm
     validates :postal_cord
   end
 
-  validates :phone_number, format: { with: /\A\d{11}\z/, message: '11ケタ以内で入力してください' } do
+  validates :phone_number, format: { with: /\A[0-9]+\z/, message: '半角数字のみで入力してください' } do
   end
 
   def save

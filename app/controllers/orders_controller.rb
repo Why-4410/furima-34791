@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:create, :index]
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     redirect_to root_path if current_user.id == @item.user_id || @item.order != nil
@@ -8,7 +8,9 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @form = PayForm.new(order_params)
+    redirect_to root_path if current_user.id == @item.user_id || @item.order != nil
     if @form.valid?
       pay_item
       @form.save
@@ -18,12 +20,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def show
-
-  end
     
 
   private
