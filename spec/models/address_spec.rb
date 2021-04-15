@@ -12,11 +12,7 @@ RSpec.describe Address, type: :model do
       expect(@addresses).to be_valid
     end
 
-    it "tokenが空では登録できないこと" do
-      @addresses.token = nil
-      @addresses.valid?
-      expect(@addresses.errors.full_messages).to include("Token can't be blank")
-    end
+    
 
     
   end
@@ -27,6 +23,12 @@ RSpec.describe Address, type: :model do
     expect(@addresses).to be_valid
   end
 
+  it "tokenが空では登録できないこと" do
+    @addresses.token = nil
+    @addresses.valid?
+    expect(@addresses.errors.full_messages).to include("Token can't be blank")
+  end
+  
   it "都道府県を入力すれば登録できる" do
     @addresses.prefecture_id = 2
     expect(@addresses).to be_valid

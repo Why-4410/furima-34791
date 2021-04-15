@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-
     @form = PayForm.new(order_params)
     redirect_to root_path if current_user.id == @item.user_id || @item.order != nil
     if @form.valid?
