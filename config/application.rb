@@ -17,7 +17,7 @@ module Furima34791
     # the framework and any gems in your application.
   end
 
-  config.action_view.field_error_proc = Proc.new do |html_tag, instance| 
-    html_tag
-  end
+#   config.action_view.field_error_proc = Proc.new do |html_tag, instance| 
+#   html_tag
+# end
 end
