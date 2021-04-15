@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+  
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -23,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if current_user.id == @item.user_id || @item.order != nil
+    redirect_to root_path if current_user.id != @item.user_id || @item.order != nil
   end
 
   def update
